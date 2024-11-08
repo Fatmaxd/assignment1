@@ -1,0 +1,14 @@
+# Ignore compiled executable
+VoleMachineSimulator.exe
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore test and build artifacts
+*.log
+*.tmp
+/tests/test_results.txt
