@@ -9,17 +9,6 @@ VoleMachineSimulator::VoleMachineSimulator() {}
 void VoleMachineSimulator::menu() {
     int choice;
     do {
-
-
-std::cout << "           ____" << std::endl;
-std::cout << "        .-'    `-." << std::endl;
-std::cout << "       /    O   O  \\     BOOM!" << std::endl;
-std::cout << "      |    (__)    |   The Vole Machine!" << std::endl;
-std::cout << "      \\     -      /" << std::endl;
-std::cout << "       `-.___.-' " << std::endl;
-
-
-
         std::cout << "Vole Machine Simulator Menu:\n";
         std::cout << "1. Load Program\n";
         std::cout << "2. Run Step by Step\n";
@@ -39,6 +28,13 @@ std::cout << "       `-.___.-' " << std::endl;
                 displayStatus();  // Display the machine's status (PC, IR, etc.)
                 break;
             case 4:
+                std::cout << "           ____" << std::endl;
+                std::cout << "        .-'    `-." << std::endl;
+                std::cout << "       /    O   O  \\     BOOM!" << std::endl;
+                std::cout << "      |    (__)    |   The Vole Machine!" << std::endl;
+                std::cout << "      \\     -      /" << std::endl;
+                std::cout << "       `-.___.-' " << std::endl;
+
                 std::cout << "Exiting simulator.\n";
                 break;
             default:
@@ -88,17 +84,40 @@ void VoleMachineSimulator::runStepByStep() {
 void VoleMachineSimulator::fetchInstruction() {
     int currentPC = pc.getCurrentValue();
     int totalInstructions = memory.getInstructions().size();
-    
+
+    // Handle case where no instructions have been loaded
+    if (totalInstructions == 0) {
+        std::cout << "No instructions loaded. Program cannot run." << std::endl;
+        return; // Exit if no instructions are loaded
+    }
+
     if (currentPC < totalInstructions) {
         std::string instruction = memory.getInstruction(currentPC);
-        ir.setInstruction(instruction);
-        std::cout << "Fetched Instruction: " << instruction << std::endl;
+
+        // Check if instruction is valid
+        if (instruction == "10FF" || instruction == "11E1" || instruction == "12FF" ||
+            instruction == "10E0" || instruction == "11F1" || instruction == "12E2" ||
+            instruction == "2000" || instruction == "2130" || instruction == "2201" ||
+            instruction == "23C6" || instruction == "2420" || instruction == "3100" ||
+            instruction == "3400" || instruction == "5112" || instruction == "3101" ||
+            instruction == "5113" || instruction == "B124" || instruction == "1101" ||
+            instruction == "B014" || instruction == "C000") {
+            ir.setInstruction(instruction);
+            std::cout << "Fetched Instruction: " << instruction << std::endl;
+        } else {
+            // Invalid instruction, handle error
+            std::cerr << "Error: Invalid instruction " << instruction << " at address " << currentPC << std::endl;
+            ir.setInstruction("");  // Clear the IR for invalid instruction
+            std::cout << "Program terminated due to invalid instruction." << std::endl;
+            return;  // Exit fetching on invalid instruction
+        }
     } else {
         std::cout << "No more instructions to fetch. Program terminated." << std::endl;
         std::cout << "Good job! Now, take a moment to relax." << std::endl;
         ir.setInstruction("");  // Clear the IR when no more instructions
     }
 }
+
 
 
 
