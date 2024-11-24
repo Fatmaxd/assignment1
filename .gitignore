@@ -1,6 +1,17 @@
 # Ignore compiled executable
 VoleMachineSimulator.exe
 
+# Ignore build artifacts
+*.o
+*.obj
+*.a
+*.so
+*.dSYM/
+*.dll
+*.pdb
+*.lib
+*.dylib
+
 # Ignore VSCode settings
 .vscode/
 
@@ -8,7 +19,16 @@ VoleMachineSimulator.exe
 .DS_Store
 Thumbs.db
 
-# Ignore test and build artifacts
+# Ignore temporary files from editors
+*.swp
+*.swo
+
+# Ignore logs
 *.log
 *.tmp
+
+# Ignore test results
 /tests/test_results.txt
+
+# Ignore program input/output files
+*.out

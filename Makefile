@@ -1,29 +1,34 @@
-# Compiler and compiler flags
+# Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Iinclude
-
-# Target executable
-TARGET = VoleMachineSimulator
+CXXFLAGS = -std=c++11 -Wall
 
 # Directories
 SRC_DIR = src
 INCLUDE_DIR = include
 
-# Source files and object files
+# Target executable
+TARGET = VoleMachineSimulator.exe
+
+# Source files
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+
+# Object files (compiled directly without obj folder)
 OBJS = $(SRCS:.cpp=.o)
 
-# Default rule to build the target
+# Default target
 all: $(TARGET)
 
-# Link object files to create the final executable
+# Link the executable
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -o $@ $(OBJS)
 
-# Compile each .cpp file to a .o file
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# Compile source files into object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
-# Clean up object files and the executable
+# Clean up build files
 clean:
-	rm -f $(OBJS) $(TARGET)
+	del /Q *.o $(TARGET)
+
+# Phony targets
+.PHONY: all clean
