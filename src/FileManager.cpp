@@ -10,6 +10,7 @@ void FileManager::loadProgram(const std::string& filename, Memory& memory) {
     }
 
     std::vector<std::string> instructions;
+    std::vector<std::string> invalidInstructions; // Store invalid instructions
     std::string instruction;
     while (file >> instruction) {
         // Expanded list of valid instructions
@@ -23,8 +24,29 @@ void FileManager::loadProgram(const std::string& filename, Memory& memory) {
             instructions.push_back(instruction);
             std::cout << "Loaded instruction: " << instruction << std::endl;
         } else {
+            // Store invalid instructions
+            invalidInstructions.push_back(instruction);
             std::cerr << "Invalid instruction: " << instruction << std::endl;
         }
     }
+
+    // Check if there are no valid instructions
+    if (instructions.empty()) {
+        std::cout << "No valid instructions loaded. Program cannot run." << std::endl;
+        return; // Terminate loading process if no valid instructions are present
+    }
+
+    // Load valid instructions into memory
     memory.loadInstructions(instructions);
+
+    // After loading, print summary of invalid instructions (if any)
+    if (!invalidInstructions.empty()) {
+        std::cout << "\nInvalid instructions summary:\n";
+        for (const std::string& invalid : invalidInstructions) {
+            std::cout << invalid << std::endl;
+        }
+    }
+
+    std::cout << "\nProgram loaded with " << instructions.size() << " valid instructions and "
+              << invalidInstructions.size() << " invalid instructions.\n";
 }
