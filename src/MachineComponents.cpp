@@ -89,4 +89,4 @@ void Screen::displayContent() const {
     for (const auto& line : content) {
         std::cout << line << std::endl;
     }
-}
+} 

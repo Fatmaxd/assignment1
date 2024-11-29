@@ -1,6 +1,6 @@
 #ifndef INSTRUCTIONS_H
 #define INSTRUCTIONS_H
-
+ 
 #include <string>
 
 // Base Instruction class

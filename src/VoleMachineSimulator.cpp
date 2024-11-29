@@ -280,3 +280,4 @@ void VoleMachineSimulator::displayStatus() {
               << std::dec << pc.getCurrentValue() << " / " << instructions.size() << std::endl;
     std::cout << "---------------------------------" << std::endl;
 }
+ 

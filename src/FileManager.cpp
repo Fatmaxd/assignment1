@@ -50,3 +50,4 @@ void FileManager::loadProgram(const std::string& filename, Memory& memory) {
     std::cout << "\nProgram loaded with " << instructions.size() << " valid instructions and "
               << invalidInstructions.size() << " invalid instructions.\n";
 }
+ 

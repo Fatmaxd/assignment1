@@ -1,5 +1,5 @@
 # Vole Machine Simulator
-
+ 
 ## Overview
 The Vole Machine Simulator is a C++ project developed as part of the CS213 - **Object Oriented Programming** course. The simulator mimics the operations of a fictional Vole machine, allowing users to load and execute machine programs, step by step, while tracking the status of the program counter, registers, and memory. It’s an educational tool designed to help understand how low-level machine operations work.
 

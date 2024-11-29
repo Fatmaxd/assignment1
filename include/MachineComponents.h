@@ -1,6 +1,6 @@
 #ifndef MACHINECOMPONENTS_H
 #define MACHINECOMPONENTS_H
-
+ 
 #include <vector>
 #include <string>
 #include <iostream> // Needed for std::cout in displayContent

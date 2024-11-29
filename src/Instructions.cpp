@@ -1,7 +1,7 @@
 #include "Instructions.h"
 #include <iostream>
 #include "MachineComponents.h" // For access to registers and memory
-
+ 
 // LoadR0
 LoadR0::LoadR0(unsigned int val) : value(val) {}
 void LoadR0::execute() {

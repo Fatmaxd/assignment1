@@ -1,6 +1,6 @@
 # Ignore compiled executable
 VoleMachineSimulator.exe
-
+ 
 # Ignore build artifacts
 *.o
 *.obj

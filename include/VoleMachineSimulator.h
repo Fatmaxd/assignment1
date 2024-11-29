@@ -1,6 +1,6 @@
 #ifndef VOLEMACHINESIMULATOR_H
 #define VOLEMACHINESIMULATOR_H
-
+ 
 #include "MachineComponents.h"
 #include "FileManager.h"
 
